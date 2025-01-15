@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head th:replace="~{fragments :: head}"></head>
+
+<body>
+<div th:replace="~{fragments :: header}"></div>
+
+<div class="body">
+    <h1>User Panel</h1>
+
+    <div>
+        <h2>Tickets list</h2>
+        <div th:replace="~{fragments :: tickets_table}"></div>
+    </div>
+
+    <div>
+        <h2>Add Ticket</h2>
+        <form th:action="@{/user/tickets/add}" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required />
+            <br />
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" step="0.01" required />
+            <br />
+            <button type="submit">Add</button>
+        </form>
+    </div>
+
+    <div>
+        <h2>Delete Ticket</h2>
+        <form th:action="@{/user/tickets/delete}" method="post">
+            <label for="id">ID Ticket:</label>
+            <input type="number" id="id" name="id" required />
+            <br />
+            <button type="submit">Delete</button>
+        </form>
+    </div>
+</div>
+
+<div th:replace="~{fragments :: footer}"></div>
+</body>
+</html>
